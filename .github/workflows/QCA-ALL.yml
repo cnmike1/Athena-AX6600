@@ -4,10 +4,10 @@ name: QCA-ALL
 #CI计划
 on:
   #自动编译：当Auto-Clean运行完成后
-  workflow_run:
-    workflows: ["Auto-Clean"]
-    types:
-      - completed
+  #workflow_run:
+  #  workflows: ["Auto-Clean"]
+  #  types:
+  #    - completed
   #手动编译
   workflow_dispatch:
     inputs:
@@ -20,6 +20,10 @@ on:
         default: 'false'
         required: false
         type: boolean
+
+  # 新增：当你的仓库代码有更新时才自动编译（上游更新后手动同步会触发）
+  push:
+    branches: [ "main" ]
 
 #CI权限
 permissions: write-all
